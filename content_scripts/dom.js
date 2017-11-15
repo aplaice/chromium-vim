@@ -1,3 +1,5 @@
+set_dom = function() {
+
 window.DOM = {
 
   isSubmittable: function(element) {
@@ -191,3 +193,6 @@ window.DOM = {
   }
 
 };
+};
+
+set_dom();

@@ -702,6 +702,11 @@ var KeyHandler = {
     if (insertMode)
       return;
 
+    // Ugly hack. Navigating history in Firefox does not always result
+    // in the reloading of content scripts, so DOM may be undefined
+    if (typeof DOM == 'undefined') {
+      set_dom();
+    }
     var isInput = DOM.isEditable(document.activeElement);
 
     // When <Tab> or <S-Tab> is pressed in 'gi' mode

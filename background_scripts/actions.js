@@ -347,7 +347,11 @@ Actions = (function() {
       if (id) {
         return Utils.chrome.tabs.get(id, function(tabInfo) {
           chrome.windows.update(tabInfo.windowId, {focused: true}, function() {
-            Utils.chrome.tabs.update(id, {active: true, highlighted: true});
+	    if (Utils.isFirefox) {
+	      Utils.chrome.tabs.update(id, {active: true});
+	    } else {
+	      Utils.chrome.tabs.update(id, {active: true, highlighted: true});
+	    }
           });
         });
       } else if (index !== void 0) {

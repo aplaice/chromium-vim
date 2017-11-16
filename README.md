@@ -15,37 +15,27 @@ What works:
 * Scrolling (h,j,k,l,gg,G...)
 * Tab management (gt,gT,x,X...)
 * Marks (;<*>,'<*>,'')
-* History navigation (H,L) with a caveat (see below)
+* History navigation (H,L)
+* Hints (but possibly in an insecure way)
+* Loading custom cvimrc
 
 Remaining issues:
 
-* All keyboard bindings often stop being available after navigating
-  the history (irrespective of whether it's done via cvim, using
-  `Alt-←`,`Alt-→` or the back and forward history buttons). It seems
-  that dom.js is not (re)loaded when navigating in history(?).
-
 * Some (non-fatal) errors/warning messages in the console.
-
-* Make hints (`f` etc.) work — cVim's implementation depends on
-  `createShadowRoot` which is not available in Firefox, so this is
-  likely to be hard. Stealing from vimium might be the best path
-  forward here.
 
 * Make the extension work immediately upon its loading, without having
   to refresh each webpage separately (if possible).
 
 * Stability — occasionally the keybindings stop working for mysterious
-  reasons (in addition to the partially understood above history bug).
+  reasons
 
 * A few commands (e.g. `:buffer`) and keybinding don't work.
 
-* Remove hacks.
+* Some shortcuts for `ex` commands (like `b`) result in the "autofilled" ex command being selected.
+
+* Remove numerous ugly hacks.
 
 * CSS issues.
-
-* Check whether loading custom cvimrc works.
-
-* Regain compatibility with chromium.
 
 * etc.
 

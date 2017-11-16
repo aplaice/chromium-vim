@@ -724,8 +724,20 @@ Hints.create = function(type, multi) {
     main.id = 'cVim-link-container';
     main.top = document.scrollingElement.scrollTop + 'px';
     main.left = document.scrollingElement.scrollLeft + 'px';
-    Hints.shadowDOM = main.createShadowRoot();
-
+    if (Utils.isFirefox) {
+      // This will make all the hints directly available to the
+      // webpage. However, I don't _think_ that this will be a
+      // security issue — hints are not as much of a target as the
+      // command bar for example.  Also, vimperator and vimium both
+      // seem to expose the hints, without hiding them behind a
+      // shadowDOM (though they might have some other ways of
+      // mitigating the problem).  I'd have to ask 1995eaton why he
+      // decided to introduce the shadowDOM in
+      // 6be6ad114eb3e8e3ef635be9a4ddd66b5a1011c9
+      Hints.shadowDOM = main;
+    } else {
+      Hints.shadowDOM = main.createShadowRoot();
+    }
     try {
       document.lastChild.appendChild(main);
     } catch (e) {
